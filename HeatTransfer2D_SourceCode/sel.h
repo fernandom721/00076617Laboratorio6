@@ -52,7 +52,10 @@ void calculateB(Matrix &B){
 }
 
 Matrix createLocalK(int element,mesh &m){
-    float D,Ae,k = m.getParameter(THERMAL_CONDUCTIVITY);
+    float D,Ae,a,e,f;
+    a = m.getParameter(CONSTANTE_A);
+    f = m.getParameter(CONSTANTE_E);
+    a = m.getParameter(CONSTANTE_F);
     Matrix K,A,B,Bt,At;
 
     D = calculateLocalD(element,m);
@@ -71,7 +74,7 @@ Matrix createLocalK(int element,mesh &m){
     transpose(A,At);
     transpose(B,Bt);
 
-    productRealMatrix(k*Ae/(D*D),productMatrixMatrix(Bt,productMatrixMatrix(At,productMatrixMatrix(A,B,2,2,3),2,2,3),3,2,3),K);
+    productRealMatrix(-e*a*Ae/(D*D),productMatrixMatrix(Bt,productMatrixMatrix(At,productMatrixMatrix(A,B,2,2,3),2,2,3),3,2,3),K);
 
     return K;
 }
@@ -94,7 +97,7 @@ float calculateLocalJ(int i,mesh m){
 Vector createLocalb(int element,mesh &m){
     Vector b;
 
-    float Q = m.getParameter(HEAT_SOURCE),J;
+    float f = m.getParameter(CONSTANTE_F),J;
     J = calculateLocalJ(element,m);
 
     if(J == 0){
@@ -102,9 +105,9 @@ Vector createLocalb(int element,mesh &m){
         exit(EXIT_FAILURE);
     }
 
-    b.push_back(Q*J*(1/6)); 
-    b.push_back(Q*J*(1/6)); 
-    b.push_back(Q*J*(1/6));
+    b.push_back(f*J*(1/6)); 
+    b.push_back(f*J*(1/6)); 
+    b.push_back(f*J*(1/6));
 
     return b;
 }

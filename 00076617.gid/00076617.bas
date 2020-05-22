@@ -1,4 +1,4 @@
-*GenData(1) *GenData(2)
+*GenData(1) *GenData(2) *GenData(3)
 *Set Cond Dirichlet *nodes
 *set var ND=CondNumEntities(int)
 *Set Cond Neumann *nodes
@@ -21,7 +21,7 @@ EndElements
 Dirichlet
 *Set Cond Dirichlet *nodes
 *loop nodes *OnlyInCond
-*NodesNum *cond(T,real)
+*NodesNum *cond(U,real)
 *end nodes
 EndDirichlet
 

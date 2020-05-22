@@ -53,17 +53,17 @@ void addExtension(char *newfilename,char *filename, string extension){
 void leerMallayCondiciones(mesh &m,char *filename){
     char inputfilename[150];
     ifstream file;
-    float k,Q;
+    float a,e,f;
     int nnodes,neltos,ndirich,nneu;
 
     addExtension(inputfilename,filename,".dat");
     file.open(inputfilename);
 
-    file >> k >> Q;
+    file >> a >> e >> f;
 
     file >> nnodes >> neltos >> ndirich >> nneu;
 
-    m.setParameters(k,Q);
+    m.setParameters(a,e,f);
     m.setSizes(nnodes,neltos,ndirich,nneu);
     m.createData();
 

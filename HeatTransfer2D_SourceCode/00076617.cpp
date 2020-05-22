@@ -18,9 +18,9 @@ int main(int argc, char *argv[])
     Vector b;
     Vector T;
 
-    cout << "IMPLEMENTACI"<<char(224)<<"N DEL M"<<char(144)<<"TODO DE LOS ELEMENTOS FINITOS\n"
-         << "\t- TRANSFERENCIA DE CALOR\n" << "\t- 2 DIMENSIONES\n"
-         << "\t- FUNCIONES DE FORMA LINEALES\n" << "\t- PESOS DE GALERKIN\n"
+    cout << "METODO DE LOS ELEMENTO FINITOS EN 2 DIMENSIONES\n"
+         << "CON FUNCIONES DE FORMA LINEALES Y PESOS DE GARLERKIN\n"
+         << "00076617\n"
          << "*********************************************************************************\n\n";
 
     mesh m;
